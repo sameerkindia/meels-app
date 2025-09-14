@@ -7,17 +7,27 @@ export default function RootLayout() {
       <StatusBar barStyle="dark-content" />
       <Stack
         screenOptions={{
-          headerStyle: {
-            backgroundColor: "#fff",
+          contentStyle:{
+            backgroundColor: '#6e5a30ff'
           },
-          headerTintColor: "#000",
+          headerStyle: {
+            backgroundColor: "#382805ff",
+          },
+          headerTintColor: "#fff",
           headerTitleStyle: {
-            fontWeight: "bold",
+            fontWeight: "500",
           },
         }}
       >
-        <Stack.Screen name="index" />
+        <Stack.Screen name="index" options={{ title: "All Categories" }} />
         {/* <Stack.Screen name="overview/[id].jsx" /> */}
+        {/* <Stack.Screen options={({route, navigation})=>{
+          const id = route.params.categoryId;
+
+          return {
+            title: `${id}`
+          }
+        }} /> */}
       </Stack>
     </>
   );
