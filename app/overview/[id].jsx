@@ -1,8 +1,8 @@
 import { Stack } from "expo-router";
 import { useLocalSearchParams } from "expo-router/build/hooks";
-import { FlatList, StyleSheet, View } from "react-native";
-import MealItem from "../../components/MealItem";
-import { MEALS } from "../../data/DummyData";
+import { StyleSheet } from "react-native";
+import MealsList from "../../components/MealsList/MealsList";
+import { CATEGORIES, MEALS } from "../../data/DummyData";
 
 const Overview = () => {
   const { id } = useLocalSearchParams();
@@ -11,31 +11,13 @@ const Overview = () => {
     return mealItem.categoryIds.indexOf(id) >= 0;
   });
 
-  function renderMealItem(itemData) {
-    const item = itemData.item;
-    const mealItemProps = {
-      title: item.title,
-      imageUrl: item.imageUrl,
-      duration: item.duration,
-      complexity: item.complexity,
-      affordability: item.affordability,
-    };
-    return (
-      <MealItem {...mealItemProps} />
-    );
-  }
+  const categoryTitle = CATEGORIES.find((category) => category.id === id).title;
 
   return (
     <>
-      <Stack.Screen options={{ title: `Overview of ${id}` }} />
+      <Stack.Screen options={{ title: categoryTitle }} />
 
-      <View style={styles.container}>
-        <FlatList
-          data={displaydMeals}
-          keyExtractor={(item) => item.id}
-          renderItem={renderMealItem}
-        />
-      </View>
+      <MealsList items={displaydMeals} />
     </>
   );
 };
