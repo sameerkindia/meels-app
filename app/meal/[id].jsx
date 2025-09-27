@@ -22,13 +22,10 @@ export default function Meal() {
 
   const changeFavoriteHandler = () => {
     if (isFavoriteMeal) {
-      // favoriteMealsCtx.removeFavorite(id);
       dispatch(removeFavorite({id: id}))
     } else {
-      // favoriteMealsCtx.addFavorite(id);
       dispatch(addFavorite({id: id}))
     }
-    // favoriteMealsCtx
   };
 
   return (
